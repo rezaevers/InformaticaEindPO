@@ -31,7 +31,7 @@ class Game:
     self.tm = TextManager(self)
 
     self.lvl_names = os.listdir('levels')
-    
+
     self.levels = dict()
     for level in self.lvl_names:
       self.levels[level] = Level(utils.load_data(level), self)
@@ -48,6 +48,7 @@ class Game:
         pg.quit()
         self.playing = False
         self.running = False
+        quit()
 
   def draw(self):
     self.window.fill(BLACK)
@@ -78,6 +79,7 @@ class Game:
     self.lines_timer = 0
     busy = True
     while busy:
+      self.events()
       if self.current_line is None:
         keys = pg.key.get_pressed()
         if keys[pg.K_RETURN] or keys[pg.K_SPACE]:
@@ -113,6 +115,7 @@ class Game:
     self.lines_timer = pg.time.get_ticks() + 400
     busy = True
     while busy:
+      self.events()
       keys = pg.key.get_pressed()
       if keys[pg.K_RETURN]:
         self.__init__()
@@ -124,6 +127,7 @@ class Game:
         pg.quit()
         self.running = False
         busy = False
+        quit()
       if self.cutscene_update(lines):
         self.current_line = len(lines) - 1
       self.draw()
