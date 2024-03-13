@@ -118,11 +118,13 @@ class Game:
       self.events()
       keys = pg.key.get_pressed()
       if keys[pg.K_RETURN]:
-        self.__init__()
-        self.setup()
-        self.intro()
-        while self.running:
-          self.main()
+        # self.__init__()
+        # self.setup()
+        # self.intro()
+        # while self.running:
+        #   self.main()
+        pg.quit()
+        start()
       if keys[pg.K_q]:
         pg.quit()
         self.running = False
@@ -134,8 +136,11 @@ class Game:
       pg.event.pump()
       self.clock.tick(FPS)
 
-g = Game()
-g.setup()
-g.intro()
-while g.running:
-  g.main()
+def start():
+  g = Game()
+  g.setup()
+  g.intro()
+  while g.running:
+    g.main()
+
+start()

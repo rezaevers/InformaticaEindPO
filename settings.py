@@ -16,7 +16,7 @@ FPS = 30
 # game settings
 PIXELSIZE = 2
 TILESIZE = 64
-PLAYER_SPEED = 0.25
+PLAYER_SPEED = 0.2
 MOVEMENT_BUFFER = 0.17
 
 # camera settings
